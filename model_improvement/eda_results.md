@@ -1,14 +1,9 @@
-# Результаты EDA
+# EDA Results
 
-1. В начале анализа было выдвинуто предположение о влиянии числа комнат на общую площадь квартиры, которая также могла оказывать влияние на ее цену. Впоследствии, через изучение матриц корреляций было установлено, что число комнат, а также площади кухни и зала довольно сильно связаны с общей площадью, что соответствует не только данным, но и здравому смыслу. Так же число квартир в здании, а также высота потолка положительно коррелируют с данной переменной.
+1. At the beginning of the analysis, an assumption has been made about the impact of the number of rooms on the total area of a flat which could in turn affect its price. Subsequently, via studying the correlation matrices it was found that the number of rooms as well as kitchen/living room areas are pretty much correlated with the total area which is consistent not only with data but also with a common sense. Moreover, number of flats in the building as well as ceiling height have a positive correlation with this variable.
 
-2. После добавления таргета в матрицу корреляций было получено наблюдение, что общая площадь и число комнат оказывают наибольшее влияние на цену квартиры. Ранее было установлено влияние числа комнат на общую площадь, что сейчас было дополнительно подтверждено: площадь квартиры напрямую зависит от числа комнат, а цена в основном формируется из общей площади квартиры.
+2. After adding the target to the correlation matrix, we have established that both total area and number rooms represent the two factors that affect the flat prices the most. If earlier we have found the significant influence of the rooms number on the total area, then we have additionally verified that the total area of a flat is directly proportional to the number of rooms and the prices is formed based on the total area of the flat. 
 
-3. Итого среди факторов, на которые стоит обратить внимания при моделировании, находятся: общая площадь, площадь кухни, площадь зала, высота потолка и количество комнат.
+3. The factors which one needs to take into account while modeling include: total area, kitchen area, living room area, ceiling height and number of rooms.
 
-4. Было установлено наличие аномально низких значений в колонках с ценой и площадями кухни и зала, что может либо ошибкой системы, которая присвоила невведенным значениям на сайте нули, либо действительно аномалии. 
-
-В результате проведенного анализа в Jupyter Notebook, дубликаты и пропуски не были найдены, поскольку из базы данных была взята таблица с уже очищенными данными. Тем не менее, на основе диаграмм рассеяния и описательных статистик можно заметить крайне низкие значения для цены и площадей кухни и зала. Поскольку очистка делалась при помощи межквартильного размаха, для некоторых колонок была расчитана отрицательная левая граница интервала, что и привело к игнорированию низких значений. В идеальном случае стоит руководствоваться знаниями из индустрии и предположительно фиксировать возможные реальные границы для признаков, чтобы избежать аномалий. 
-
-Касательно оптимизации типов данных, можно попробовать уменьшить объем памяти, который занимает датафрейм. Нужно более детально рассмотреть границы значений в целочисленных колонках и для некоторых конвертировать тип данных в например int8 или int32, что приведет к уменьшению памяти и более быстрой обработке данных. Это особенно важно в случае наличия действительно большого объема данных. Более того, в случае наличия строковых категориальных колонок, можно было бы 
-конвертировать тип object таких колонок в тип category, чтобы также сократить объем памяти.
+4. The presence of very low values in the columns with price and kitchen/living room area which can either be attributed to the system error which assigned the empty values left in the form on the website zeros or to anomalies.
